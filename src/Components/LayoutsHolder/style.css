@@ -1,0 +1,6 @@
+.layouts {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}

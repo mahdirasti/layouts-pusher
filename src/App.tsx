@@ -1,11 +1,23 @@
 import "./App.css"
 
-import React from "react"
+import * as React from "react"
+
+import { LayoutsHolder } from "./Components"
+import Settings from "./Components/Settings"
 
 function App() {
   return (
     <div className="layouts-pusher-project">
-      Hello, here will be som amazing!
+      <LayoutsHolder width={300}>
+        {(add, remove) => {
+          return (
+            <Settings
+              {...(add ? { openLayout: add } : {})}
+              {...(remove ? { removeLayout: remove } : {})}
+            />
+          )
+        }}
+      </LayoutsHolder>
     </div>
   )
 }
