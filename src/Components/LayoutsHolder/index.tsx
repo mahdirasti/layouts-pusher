@@ -1,5 +1,7 @@
 import "./style.css"
 
+import { Stack, SxProps, Theme } from "@mui/material"
+
 import Layout from "./Layout"
 import React from "react"
 import { useDomHeight } from "../../Hook"
@@ -14,12 +16,14 @@ interface ILayoutsHolder {
     removeLayout?: IRemoveLayout
   ) => React.ReactNode
   transitionTime?: number
+  sx?: SxProps<Theme>
 }
 
 const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
   width,
   children,
-  transitionTime = 300
+  transitionTime = 300,
+  sx = {}
 }) => {
   //Handlin index of camera
   const [transition, setTransition] = React.useState(0)
@@ -57,7 +61,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
   }
 
   //Render layouts
-  const renderLayouts = (height?: number) => {
+  const renderLayouts = () => {
     let finalLayouts: React.ReactNode[] = []
 
     if (children) finalLayouts = [children(handleAddLayout, handleRemoveLayout)]
@@ -67,7 +71,12 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
     if (!finalLayouts.length) return null
 
     return (
-      <div className="layouts" style={{ height }}>
+      <Stack
+        direction="row"
+        sx={sx}
+        className="layouts"
+        style={{ height: "100vh" }}
+      >
         {finalLayouts.map((layout, key) => (
           <Layout
             key={key}
@@ -78,21 +87,9 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
             transitionTime={transition}
           />
         ))}
-      </div>
+      </Stack>
     )
   }
-
-  //Determine current layout
-  const currentLayout = React.useMemo(() => {
-    if (!layouts.length) return null
-
-    if (!layouts?.[cameraIndex - 1]) return null
-
-    return layouts[cameraIndex - 1]
-  }, [layouts, cameraIndex])
-
-  //Current layout height
-  const currentLayoutHeight = useDomHeight(currentLayout)
 
   if (!width) return null
 
@@ -101,12 +98,12 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
       className="layouts-holder"
       style={{
         width,
-        height: currentLayoutHeight,
+        height: "100vh",
         transition: `${transition / 1000}s all`,
         boxShadow: "0px 2px 8px rgba(0,0,0,0.12)"
       }}
     >
-      {renderLayouts(currentLayoutHeight)}
+      {renderLayouts()}
       {/* {children(handleAddLayout, handleRemoveLayout)} */}
     </div>
   )

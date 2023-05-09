@@ -1,23 +1,29 @@
 import "./App.css"
 
-import * as React from "react"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
 
-import { LayoutsHolder } from "./Components"
-import Settings from "./Components/Settings"
+import { HomePage } from "./Components/Pages"
+//Routes
+import { ROUTES } from "./Const"
+//Pages
+import { TelegramSidebarPage } from "./InUse"
 
 function App() {
+  //Create routes
+  const router = createBrowserRouter([
+    {
+      path: ROUTES.Home,
+      element: <HomePage />
+    },
+    {
+      path: ROUTES.TelegramSidebar,
+      element: <TelegramSidebarPage />
+    }
+  ])
+
   return (
     <div className="layouts-pusher-project">
-      <LayoutsHolder width={300}>
-        {(add, remove) => {
-          return (
-            <Settings
-              {...(add ? { openLayout: add } : {})}
-              {...(remove ? { removeLayout: remove } : {})}
-            />
-          )
-        }}
-      </LayoutsHolder>
+      <RouterProvider router={router} />
     </div>
   )
 }

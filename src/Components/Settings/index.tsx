@@ -3,9 +3,12 @@ import "./style.css"
 import * as React from "react"
 
 import { IAddLayout, IRemoveLayout } from "../LayoutsHolder"
+import { IconButton, Stack } from "@mui/material"
 
 import GeneralSettings from "./General"
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined"
 import SavedMessage from "./SavedMessage"
+import { Wrapper } from "../Pages/TelegramSidebar"
 
 interface ISettingsProps {
   openLayout?: IAddLayout
@@ -22,26 +25,24 @@ const Settings: React.FunctionComponent<ISettingsProps> = ({
   }
 
   return (
-    <div className="settings">
-      <ul>
-        {[
-          {
-            title: "General Settings",
-            component: (
-              <GeneralSettings push={handleOpenComponent} back={removeLayout} />
-            )
-          },
-          {
-            title: "Saved Message",
-            component: <SavedMessage />
-          }
-        ].map((item, key) => (
-          <li key={key} onClick={() => handleOpenComponent(item.component)}>
-            {item.title}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Stack
+      sx={{ p: "8px 16px" }}
+      direction="row"
+      alignItems="center"
+      className="settings"
+    >
+      <IconButton
+        onClick={() =>
+          handleOpenComponent(
+            <Wrapper title="General Settings" back={removeLayout}>
+              <GeneralSettings back={removeLayout} push={handleOpenComponent} />
+            </Wrapper>
+          )
+        }
+      >
+        <MenuOutlinedIcon />
+      </IconButton>
+    </Stack>
   )
 }
 
