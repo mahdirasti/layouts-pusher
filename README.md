@@ -3,4 +3,5 @@ Layouts pusher is the sample react project that includes a fully customizable co
 
 # Installation
 1- after cloning, command yarn/npm install
+<br />
 2- after installing dependencies, command yarn start/npm run start
