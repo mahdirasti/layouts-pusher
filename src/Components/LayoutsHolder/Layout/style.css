@@ -4,5 +4,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition-timing-function: cubic-bezier(0.82, 0.085, 0.395, 0.895);
+  transition-timing-function: cubic-bezier(
+    0.82,
+    0.085,
+    0.395,
+    0.895
+  ) !important;
+}
+
+.layout.current {
+  filter: none !important;
+  opacity: 1;
+}
+
+.layout-blured {
+  filter: blur(10px);
+  opacity: 0;
 }

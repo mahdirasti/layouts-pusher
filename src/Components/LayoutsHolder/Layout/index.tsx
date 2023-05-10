@@ -8,6 +8,7 @@ interface ILayoutProps {
   cameraIndex: number
   width: number
   transitionTime?: number
+  hasBlur?: boolean
 }
 
 const Layout: React.FunctionComponent<ILayoutProps> = ({
@@ -15,16 +16,25 @@ const Layout: React.FunctionComponent<ILayoutProps> = ({
   itemIndex,
   cameraIndex,
   width = 0,
-  transitionTime = 300
+  transitionTime = 300,
+  hasBlur = false
 }) => {
   //Measure distance to current
-  const distance = (itemIndex - (cameraIndex - 1)) * width
+  let distance = (itemIndex - (cameraIndex - 1)) * width
+
+  if (distance < 0) {
+    distance -= 20
+  } else if (distance > width) {
+    distance += 20
+  }
 
   if (!width) return null
 
   return (
     <div
-      className="layout"
+      className={`layout ${hasBlur ? "layout-blured" : ""} ${
+        itemIndex === cameraIndex - 1 ? "current" : ""
+      }`}
       style={{
         transform: `translateX(${distance}px)`,
         transition: `${transitionTime / 1000}s all`

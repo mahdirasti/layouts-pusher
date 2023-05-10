@@ -1,15 +1,16 @@
 import * as React from "react"
 
-import { ListItem, ListItemIcon, ListItemText, alpha } from "@mui/material"
+import { ListItem, ListItemIcon, ListItemText, alpha, ListItemAvatar, Avatar } from "@mui/material"
 
 import { IAddLayout } from "../../../LayoutsHolder"
 
 export interface ISidebarItem {
   title: string
   secondary?: string
-  icon: React.ReactNode
+  icon?: React.ReactNode
   component?: React.ReactNode
   onClick?: () => void
+  avatar?: string
 }
 
 interface ISidebarItemProps {
@@ -37,7 +38,13 @@ const SidebarItem: React.FunctionComponent<ISidebarItemProps> = ({
         }
       }}
     >
-      <ListItemIcon>{item.icon}</ListItemIcon>
+      {item?.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
+      {item?.avatar && <ListItemAvatar>
+                <Avatar
+                  alt={item.title}
+                  src={item.avatar}
+                />
+              </ListItemAvatar>}
       <ListItemText
         id={item.title.toLowerCase().replaceAll(" ", "-")}
         primary={item.title}

@@ -4,7 +4,6 @@ import { Stack, SxProps, Theme } from "@mui/material"
 
 import Layout from "./Layout"
 import React from "react"
-import { useDomHeight } from "../../Hook"
 
 export type IAddLayout = (item: React.ReactNode) => void
 export type IRemoveLayout = () => void
@@ -17,13 +16,15 @@ interface ILayoutsHolder {
   ) => React.ReactNode
   transitionTime?: number
   sx?: SxProps<Theme>
+  hasBlur?: boolean
 }
 
 const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
   width,
   children,
   transitionTime = 300,
-  sx = {}
+  sx = {},
+  hasBlur = false
 }) => {
   //Handlin index of camera
   const [transition, setTransition] = React.useState(0)
@@ -85,6 +86,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
             cameraIndex={cameraIndex}
             width={width}
             transitionTime={transition}
+            hasBlur={hasBlur}
           />
         ))}
       </Stack>
@@ -99,8 +101,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
       style={{
         width,
         height: "100vh",
-        transition: `${transition / 1000}s all`,
-        boxShadow: "0px 2px 8px rgba(0,0,0,0.12)"
+        transition: `${transition / 1000}s all`
       }}
     >
       {renderLayouts()}
