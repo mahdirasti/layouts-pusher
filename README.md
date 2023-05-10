@@ -14,3 +14,5 @@ Hope you enjoy.
 1- after cloning, command yarn/npm install
 <br />
 2- after installing dependencies, command yarn build/npm run build
+
+
