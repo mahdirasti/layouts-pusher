@@ -16,6 +16,7 @@ import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined"
+import PrivacyAndSecurity from "./PrivacyAndSecurity"
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined"
@@ -89,8 +90,8 @@ const GeneralSettings: React.FunctionComponent<IGeneralSettingsProps> = ({
               title: "Privacy and Security",
               icon: <LockOutlinedIcon />,
               component: (
-                <Wrapper title={"Privacy and Securityr"} back={back}>
-                  Data should be put here!
+                <Wrapper title={"Privacy and Security"} back={back}>
+                  <PrivacyAndSecurity push={push} back={back} />
                 </Wrapper>
               )
             },
