@@ -3,7 +3,7 @@ Layouts pusher is the sample react project that includes a fully customizable co
 Hope you enjoy.
 
 # InUse - Telegram
-![image info](https://dl.dropboxusercontent.com/s/0rat4qi8944846i/layout-pusher-compressed.gif?dl=0)
+![image info](telegram-sample.gif)
 
 # Installation
 1- after cloning, command yarn/npm install
