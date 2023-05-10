@@ -12,7 +12,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 4 }}>
-      <Typography>You can add more sample by collobrating!</Typography>
+      <Typography>You can add more samples by collobrating!</Typography>
       <Stack direction="row" spacing={2}>
       <Button
         variant="outlined"
