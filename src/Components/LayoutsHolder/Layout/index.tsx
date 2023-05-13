@@ -1,6 +1,6 @@
-import "./style.css"
-
 import * as React from "react"
+
+import styled from "styled-components"
 
 interface ILayoutProps {
   item: React.ReactNode
@@ -10,6 +10,28 @@ interface ILayoutProps {
   transitionTime?: number
   hasBlur?: boolean
 }
+
+const LayoutDiv = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition-timing-function: cubic-bezier(
+    0.82,
+    0.085,
+    0.395,
+    0.895
+  ) !important;
+  &.layout-blured {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  &.current {
+    filter: none !important;
+    opacity: 1;
+  }
+`
 
 const Layout: React.FunctionComponent<ILayoutProps> = ({
   item,
@@ -31,7 +53,7 @@ const Layout: React.FunctionComponent<ILayoutProps> = ({
   if (!width) return null
 
   return (
-    <div
+    <LayoutDiv
       className={`layout ${hasBlur ? "layout-blured" : ""} ${
         itemIndex === cameraIndex - 1 ? "current" : ""
       }`}
@@ -41,7 +63,7 @@ const Layout: React.FunctionComponent<ILayoutProps> = ({
       }}
     >
       {item}
-    </div>
+    </LayoutDiv>
   )
 }
 

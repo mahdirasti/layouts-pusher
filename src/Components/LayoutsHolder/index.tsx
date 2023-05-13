@@ -1,12 +1,16 @@
-import "./style.css"
-
-import { Stack, SxProps, Theme } from "@mui/material"
-
 import Layout from "./Layout"
 import React from "react"
+import styled from "styled-components"
 
 export type IAddLayout = (item: React.ReactNode) => void
 export type IRemoveLayout = () => void
+
+const Layouts = styled.div`
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  direction: row;
+`
 
 interface ILayoutsHolder {
   width: number
@@ -72,7 +76,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
     if (!finalLayouts.length) return null
 
     return (
-      <div className={`layouts ${className}`}>
+      <Layouts className={`layouts ${className}`}>
         {finalLayouts.map((layout, key) => (
           <Layout
             key={key}
@@ -84,7 +88,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
             hasBlur={hasBlur}
           />
         ))}
-      </div>
+      </Layouts>
     )
   }
 
