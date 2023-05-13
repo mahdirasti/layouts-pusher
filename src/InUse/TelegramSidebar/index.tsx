@@ -13,11 +13,12 @@ const TelegramSidebar: React.FunctionComponent<ITelegramSidebarProps> = (
     <LayoutsHolder
       width={400}
       transitionTime={200}
-      sx={{
-        bgcolor: (t) => t.palette.grey[200],
-        border: 1,
-        borderColor: (t) => alpha(t.palette.common.black, 0.05)
-      }}
+      className="layouts-fullheight telegram-sidebar"
+      // sx={{
+      //   bgcolor: (t) => t.palette.grey[200],
+      //   border: 1,
+      //   borderColor: (t) => alpha(t.palette.common.black, 0.05)
+      // }}
       hasBlur
     >
       {(add, remove) => {

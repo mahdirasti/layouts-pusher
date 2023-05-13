@@ -21,3 +21,8 @@
   filter: blur(10px);
   opacity: 0;
 }
+
+.layouts {
+  display: flex;
+  direction: row;
+}

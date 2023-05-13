@@ -15,7 +15,7 @@ interface ILayoutsHolder {
     removeLayout?: IRemoveLayout
   ) => React.ReactNode
   transitionTime?: number
-  sx?: SxProps<Theme>
+  className?: string
   hasBlur?: boolean
 }
 
@@ -23,7 +23,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
   width,
   children,
   transitionTime = 300,
-  sx = {},
+  className,
   hasBlur = false
 }) => {
   //Handlin index of camera
@@ -72,12 +72,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
     if (!finalLayouts.length) return null
 
     return (
-      <Stack
-        direction="row"
-        sx={sx}
-        className="layouts"
-        style={{ height: "100vh" }}
-      >
+      <div className={`layouts ${className}`}>
         {finalLayouts.map((layout, key) => (
           <Layout
             key={key}
@@ -89,7 +84,7 @@ const LayoutsHolder: React.FunctionComponent<ILayoutsHolder> = ({
             hasBlur={hasBlur}
           />
         ))}
-      </Stack>
+      </div>
     )
   }
 
