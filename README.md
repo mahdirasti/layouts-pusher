@@ -6,6 +6,7 @@ Hope you enjoy.
 # Installation
 
 `yarn add layouts-pusher`
+
 `npm install layouts-pusher `
 
 
