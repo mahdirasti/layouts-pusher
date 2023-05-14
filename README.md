@@ -3,22 +3,21 @@
 Layouts pusher is the sample react project that includes a fully customizable component for holding nested components, I tried that write it clearly, commented everywhere and also wrote tests for every components, you will see reusability, readability and scaleability.
 Hope you enjoy.
 
+# Installation
+
+`yarn add layouts-pusher`
+
+`npm install layouts-pusher `
+
+
 # Live Demo
 
 [Link Demo Link](https://layouts-pusher.vercel.app/telegram-sidebar)
 
+# Docs
+
+Coming Soon
+
 # InUse - Telegram
 
 ![image info](assets/telegram-sample.gif)
-
-# Installation
-
-1- after cloning, command yarn/npm install
-<br />
-2- after installing dependencies, command yarn start/npm run start
-
-# Build Instruction
-
-1- after cloning, command yarn/npm install
-<br />
-2- after installing dependencies, command yarn build/npm run build
