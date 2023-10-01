@@ -14,10 +14,6 @@ Hope you enjoy.
 
 [Link Demo Link](https://layouts-pusher.vercel.app/telegram-sidebar)
 
-# Docs
-
-Coming Soon
-
 # InUse - Telegram
 
 ![image info](assets/telegram-sample.gif)
